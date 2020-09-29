@@ -1,0 +1,2 @@
+# Solitare
+Solitare emulator
