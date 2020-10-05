@@ -7,3 +7,4 @@ Try and get a king of each color open
 if there's nothing playable in the deck, see if you can drag a card from the end field
 If there's nothing that can be moved, flip a card from the deck.
 Don't move the same card twice in a row.
+The last card in a pile should be moved before moving from the longest row
