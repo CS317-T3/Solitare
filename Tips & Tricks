@@ -1,0 +1,9 @@
+Move Cards on play field before moving cards from the deck
+When you see and ACE card move it to the end field
+When a card can be moved to the end field, move it to the end field.
+When playing on the play field add and remove cards from the longest row first.
+Always move a king to an open space if available
+Try and get a king of each color open
+if there's nothing playable in the deck, see if you can drag a card from the end field
+If there's nothing that can be moved, flip a card from the deck.
+Don't move the same card twice in a row.
