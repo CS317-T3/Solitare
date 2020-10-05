@@ -10,6 +10,7 @@ public class Deck
  ArrayList<String> rank;
  Stack<Card> cardsInPlay;
  Queue cardsInDeck;
+ Random r;
  
  public Deck() 
  {
@@ -17,6 +18,7 @@ public class Deck
 	 this.suits = new ArrayList<String>();
 	 this.rank = new ArrayList<String>();
 	 this.cardsInPlay = new Stack<Card>();
+	 this.r = new Random();
 	 this.suits.add("Spades");
 	 this.suits.add("Hearts");
 	 this.suits.add("Diamonds");
@@ -47,8 +49,7 @@ public class Deck
  
        public void shuffle()
    {
-	   Random r = new Random();
-	   for(int i = 51; i > 0; i--)
+	   for(int i = this.deck.size()- 1; i > 0; i--)
 	   {
 		   int j = r.nextInt(i + 1);
 		   Card temp = this.deck.get(i);
