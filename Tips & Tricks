@@ -1,10 +1,12 @@
-Move Cards in tableau before moving cards from the waste
-When you see and ACE card move it to the foundation
+Don't move the same card twice in a row
 When a card can be moved to the foundation, move it to the foundation.
+The last card in a pile should be moved before moving from the longest tableau set.
 When playing on the tableau add and remove cards from tableau 7 - 1.
 Always move a king to an open tableau if available
-Try and get a king of each color to an open tableau.
-if there's nothing playable in the waste, see if you can drag a card from the foundation
+Move Cards in tableau before moving cards from the waste
 If there's nothing that can be moved, flip a card from the waste.
-Don't move the same card twice in a row.
-The last card in a pile should be moved before moving from the longest tableau set.
+if there's nothing playable in the waste, see if you can drag a card from the foundation
+
+
+
+
