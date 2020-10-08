@@ -51,5 +51,9 @@ MileStone 3: MVP program: 12 Oct. 2020
 MileStone 4: Develop connection between objects and get simulation running: 16 Oct. 2020
 MileStone 5: Complete project with multiple simulations and win percentage: 22 Oct. 2020
 
+Existing Solution:
+We have the competed card and deck classes as a part of our prototype and have set up the eclipse file for java implemention of the rest of our classes stated above.
 
+Proposed Solution:
+As a team, we look to develop an effective and efficient simulation of the game of solitaire, to produce the win percentage in a random game of solitaire.
 
