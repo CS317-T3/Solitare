@@ -12,19 +12,18 @@ Solitaire Simulator
 Ben Richards, Thomas Torbert, Leo Braun, Readyson Vang, Greg Drayton
 
 Overview
-Create a program that runs multiple simulations of the game of solitaire and attempts to get the highest win percentagebased on a stategy developed by the team members.
+Create a program that runs multiple simulations of the game of solitaire and attempts to get the highest win percentage based on a stategy developed by the team members.
 
 Context
 Java in Eclipse
 Deck & Card Classes completed 10/5/20
-1-Construct play area that has waste, tableau, and foundation stacks.
-2-Create Solitaire GUI 
-3-Card deck class interacts with GUI to convey info to user
-4-Waste Pile draws 3 cards from top of deck
-5-Tableau set up in 1-7 card order left to right
-6-4 foundation piles specific to each ace
-7-Waste pile resets from the top after all cards are layed maximum x3 w/o other moves before game ends(loss)
-8-Alternate between red and black card faces in tableau stacks with highest range card at the bottom.
+1-Construct play area that has waste, tableau, and foundation stacks. 
+2-Card deck class interacts with GUI to convey info to user
+3-Waste Pile draws 3 cards from top of deck
+4-Tableau set up in 1-7 card order left to right
+5-4 foundation piles specific to each ace
+6-Waste pile resets from the top after all cards are layed maximum x3 w/o other moves before game ends(loss)
+7-Alternate between red and black card faces in tableau stacks with highest range card at the bottom.
 
 Classes:
 Deck
