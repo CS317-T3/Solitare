@@ -8,7 +8,7 @@ If there's nothing that can be moved, flip a card from the waste.
 If there's nothing playable in the waste, see if you can drag a card from the foundation
 
 Design Documentation:
-Solitair Simulator
+Solitaire Simulator
 Ben Richards, Thomas Torbert, Leo Braun, Readyson Vang, Greg Drayton
 
 Overview
@@ -36,15 +36,20 @@ Foundation
 Solitaire
 
 Goals
-Win a game
+Develop running program that will produce a consistent number of wins.
+Follow the milestone timeline to stay on track.
 
-non Goals:
-win every game
+Non Goals
+Find optimal solution to get highest win percentage.
+Team collaboration splits work between the group evenly.
 
 MileStones:
 Start Date: 5 Oct. 2020
 MileStone 1: Create Deck and Card Classes: Due 5 Oct. 2020
-MileStone 2: ???
+MileStone 2: Start impementation of all classes: 9 Oct. 2020
+MileStone 3: MVP program: 12 Oct. 2020
+MileStone 4: Develop connection between objects and get simulation running: 16 Oct. 2020
+MileStone 5: Complete project with multiple simulations and win percentage: 22 Oct. 2020
 
 
 
