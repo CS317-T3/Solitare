@@ -33,7 +33,7 @@ Playfield
 Waste
 Tableau
 Foundation
-Solitaire (runner class)
+Solitaire
 
 Goals
 Develop running program that will produce a consistent number of wins.
@@ -42,6 +42,7 @@ Follow the milestone timeline to stay on track.
 Non Goals
 Find optimal solution to get highest win percentage.
 Team collaboration splits work between the group evenly.
+Make a game that can run multiple simulations at once so it doesn't take too long. 
 
 MileStones:
 Start Date: 5 Oct. 2020
@@ -56,4 +57,17 @@ We have the competed card and deck classes as a part of our prototype and have s
 
 Proposed Solution:
 As a team, we look to develop an effective and efficient simulation of the game of solitaire, to produce the win percentage in a random game of solitaire.
+
+Alternative Solution:
+We have not developed an alternative solution to the project.
+
+Testing:
+TBA
+
+Cross Team Impact:
+Not as applicable to this project, but collaborating using other teams ideas to help develop the best program.
+
+
+
+
 
