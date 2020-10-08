@@ -2,13 +2,15 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.Random;
+import java.util.LinkedList;
+
 
 public class Deck 
 {
  ArrayList<Card> deck;
  ArrayList<String> suits;
  ArrayList<String> rank;
- Stack<Card> cardsInPlay;
+ LinkedList<Card> cardsInPlay;
  Queue cardsInDeck;
  Random r;
  
@@ -17,7 +19,7 @@ public class Deck
 	 this.deck = new ArrayList<Card>();
 	 this.suits = new ArrayList<String>();
 	 this.rank = new ArrayList<String>();
-	 this.cardsInPlay = new Stack<Card>();
+	 this.cardsInPlay = new LinkedList<Card>();
 	 this.r = new Random();
 	 this.suits.add("Spades");
 	 this.suits.add("Hearts");
@@ -59,7 +61,7 @@ public class Deck
 	   }
 	   for(Card card: this.deck)
 	   {
-		   this.cardsInPlay.push(card);
+		   this.cardsInPlay.add(card);
 	   }
 	   
    }
