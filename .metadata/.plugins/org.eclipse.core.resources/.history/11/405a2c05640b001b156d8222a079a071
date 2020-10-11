@@ -1,0 +1,35 @@
+
+public class SolitaireRunner
+{
+	static int wins = 0;
+ public static void main(String[] args) 
+ {
+	 
+	for (int i = 0; i < 10; i++)
+	{
+		int count = 0;
+	Deck deck = new Deck();
+	deck.shuffle();
+	PlayField playfield = new PlayField(deck);
+	System.out.println(playfield.waste.wasteFaceDown.size());
+	playfield.setUp();
+	System.out.println(playfield.waste.wasteFaceDown.size());
+
+	
+	while (playfield.waste.wasteFaceDown.isEmpty() == false && playfield.waste.wasteFaceUp.empty() == false && playfield.stop != false)
+	{
+		count ++;
+		playfield.MoveToFoundation();
+		playfield.playCard();
+		
+	}
+	if (playfield.stop == false)
+	{
+		wins++;
+	}
+	
+	System.out.println("Count: " + count);
+	}
+	System.out.println("Wins: " + wins);
+ }
+}

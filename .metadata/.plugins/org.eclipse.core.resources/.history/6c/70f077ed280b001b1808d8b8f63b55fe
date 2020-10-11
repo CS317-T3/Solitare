@@ -1,0 +1,29 @@
+
+public class PlayField 
+{
+Waste waste;
+Tableau tableau;
+Foundation foundation;
+  public PlayField(Deck deck)
+  {
+	  this.waste = new Waste(deck);
+	  this.tableau = new Tableau(deck);
+	  this.foundation = new Foundation(deck);
+  }
+  
+  public void setUp()
+  {
+	  tableau.setUp();
+	  waste.setUp();
+  }
+  
+  public void draw()
+  {
+	  waste.draw();
+  }
+  
+  public void playCard()
+  {
+	  waste.playCard();
+  }
+}

@@ -1,0 +1,19 @@
+
+public class SolitaireRunner
+{
+ public static void main(String[] args) 
+ {
+	Deck deck = new Deck();
+	deck.shuffle();
+	PlayField playfield = new PlayField(deck);
+	
+	while (playfield.waste.wasteFaceDown.size() != 0 && playfield.waste.wasteFaceUp.empty() == false)
+	{
+		playfield.MoveToFoundation();
+		playfield.playCard();
+		
+	}
+	
+	
+ }
+}

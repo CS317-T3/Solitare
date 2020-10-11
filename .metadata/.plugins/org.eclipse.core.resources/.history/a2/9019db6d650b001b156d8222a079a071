@@ -1,0 +1,52 @@
+import java.util.Stack;
+import java.util.LinkedList;
+public class Waste 
+{
+Deck deck;	
+LinkedList<Card> wasteFaceDown;
+Stack<Card> wasteFaceUp;
+
+
+  public Waste(Deck deck)
+  {
+	  this.deck = deck;
+	  this.wasteFaceDown = new LinkedList<Card>();
+	  this.wasteFaceUp = new Stack<Card>();
+  }
+  
+  public void setUp()
+  {
+//	   for(Card card: deck.deck)
+//	   {
+//		 card.toString();
+//		 wasteFaceDown.add(card);
+//	   }
+	  
+	  wasteFaceDown.add(new Card("A", "A", 1));
+  }
+  
+  public Card draw()
+  {
+	  int size = wasteFaceDown.size();
+	  Card card = wasteFaceDown.get(size - 1);
+	  wasteFaceDown.remove(size - 1);
+	  return card;
+  }
+  
+  public void draw2()
+  {
+	  int size = wasteFaceDown.size();
+	  wasteFaceUp.push(wasteFaceDown.get(size));
+	  wasteFaceDown.remove(size);
+  }
+
+  public Card playCard()
+  {
+	   return wasteFaceUp.peek();
+  }
+  
+  public Card moveToFoundation()
+  {
+	  return wasteFaceUp.peek();
+  }
+}

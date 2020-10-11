@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+public class Tableau 
+{
+Deck deck;
+ArrayList<Card> Tableau1;
+ArrayList<Card> Tableau2;
+ArrayList<Card> Tableau3;
+ArrayList<Card> Tableau4;
+ArrayList<Card> Tableau5;
+ArrayList<Card> Tableau6;
+ArrayList<Card> Tableau7;
+
+   public Tableau(Deck deck)
+   {
+	   this.deck = deck;
+	   this.Tableau1 = new ArrayList<Card>();
+	   this.Tableau2 = new ArrayList<Card>();
+	   this.Tableau3 = new ArrayList<Card>();
+	   this.Tableau4 = new ArrayList<Card>();
+	   this.Tableau5 = new ArrayList<Card>();
+	   this.Tableau6 = new ArrayList<Card>();
+	   this.Tableau7 = new ArrayList<Card>();
+   }
+   
+   public void setUp()
+   {
+	   Tableau1.add(deck.draw());
+	   Tableau2.add(deck.draw());
+	   Tableau3.add(deck.draw());
+	   Tableau4.add(deck.draw());
+	   Tableau5.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau2.add(deck.draw());
+	   Tableau3.add(deck.draw());
+	   Tableau4.add(deck.draw());
+	   Tableau5.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau3.add(deck.draw());
+	   Tableau4.add(deck.draw());
+	   Tableau5.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau4.add(deck.draw());
+	   Tableau5.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau5.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau6.add(deck.draw());
+	   Tableau7.add(deck.draw());
+	   Tableau7.add(deck.draw()); 
+	   Tableau1.get(0).setFaceUp(true);
+	   Tableau2.get(1).setFaceUp(true);
+	   Tableau3.get(2).setFaceUp(true);
+	   Tableau4.get(3).setFaceUp(true);
+	   Tableau5.get(4).setFaceUp(true);
+	   Tableau6.get(5).setFaceUp(true);
+	   Tableau7.get(6).setFaceUp(true);
+	   
+   }
+}
