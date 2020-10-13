@@ -15,18 +15,27 @@ int count = 0;
 	  this.foundation = new Foundation(deck);
   }
 
+  /**
+   * this method sets up the playing field. It puts cards in the tableaus and puts the rest in the waste
+   */
   public void setUp()
   {
 	  tableau.setUp();
 	  waste.setUp();
   }
 
+  /**
+   * this method draws a card from the waste before the game is in play
+   */
   public void draw()
   {
 	  waste.draw();
 	 
   }
   
+  /**
+   * used to draw the card, when the games starts
+   */
   public void draw2()
   {
 	 Card card = waste.wasteFaceDown.poll();
@@ -34,6 +43,10 @@ int count = 0;
 	
   }
 
+  /**
+   * this method sees if a card from the waste or from a tableau can be played.
+   * if it goes through the waste three times without playing a card then the game is lost
+   */
   public void playCard()
   {
 	  //System.out.println("Count: " + count);
@@ -77,6 +90,10 @@ int count = 0;
 	  }
   }
 
+  /**
+   * This method sees if the card in the waste can be moved to the foundation.
+   * After, it goes through the tableaus and sees if any of the cards at the bottom of the stack can be moved to the foundation
+   */
   public void MoveToFoundation()
   {
 	  Card card;

@@ -13,6 +13,9 @@ Stack<Card> wasteFaceUp;
 	  this.wasteFaceUp = new Stack<Card>();
   }
   
+  /**
+   * this method makes the waste pile
+   */
   public void setUp()
   {
 	  for (Card card: deck.cardsInPlay)
@@ -21,19 +24,29 @@ Stack<Card> wasteFaceUp;
 	  }
   }
   
+  /**
+   * this method takes a card from the top of the deck and puts it in the face up waste
+   */
   public void draw()
   {
 	  wasteFaceUp.push(this.deck.draw());
   }
   
 
-
+  /**
+   * this method returns a card at the top of the waste face up stack to see if it can be played
+   * @return
+   */
   public Card playCard()
   {
 	  	
 	   return wasteFaceUp.peek();
   }
   
+  /**
+   * this method returns a card at the top of the waste face up stack to see if it can be moved to the foundation
+   * @return
+   */
   public Card moveToFoundation()
   {
 	  return wasteFaceUp.peek();

@@ -24,6 +24,9 @@ ArrayList<Card> Tableau7;
 	   this.Tableau7 = new ArrayList<Card>();
    }
    
+   /**
+    * This method sets up all the tableaus with the correct amount of cards and puts each card at the end to face up.
+    */
    public void setUp()
    {
 	   Tableau1.add(deck.draw());
@@ -64,6 +67,11 @@ ArrayList<Card> Tableau7;
 	   
    }
    
+   /**
+    * this method takes a card and tableau as a parameter, the card will be placed in a specific tableau based on what integer was passed
+    * @param card
+    * @param tableau
+    */
    public void playCard(Card card, int tableau)
    {
 	   card.setFaceUp(true);
@@ -97,6 +105,11 @@ ArrayList<Card> Tableau7;
 	   }
    }
    
+   /**
+    * this method takes a card as a parameter, and checks all the other tableaus bottom card to see which tableau it can place the given card
+    * @param card
+    * @return
+    */
    public int canPlay(Card card)
    {
 	   int tab1 = Tableau1.size();

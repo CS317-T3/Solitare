@@ -15,6 +15,7 @@ public class Deck
  Queue cardsInDeck;
  Random r;
 
+ 
  public Deck() 
  {
 	 this.deck = new ArrayList<Card>();
@@ -63,6 +64,9 @@ public class Deck
 	 }
  }
 
+ /**
+  * This shuffle method shuffles the cards in the deck and puts them in linkned list called cardsInPlay
+  */
        public void shuffle()
    {
 	   for(int i = this.deck.size()- 1; i > 0; i--)
@@ -88,7 +92,11 @@ public class Deck
 //    	   }
 //       }
 
-       public Card draw()
+       /**
+        * This method takes the cardsInPlay linked list and returns the card at the top of the list
+        *
+        */
+    public Card draw()
        {
     	   Card card = this.cardsInPlay.peek();
     	   //System.out.println(card.ToString());
