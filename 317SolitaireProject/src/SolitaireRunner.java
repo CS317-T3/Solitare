@@ -6,32 +6,32 @@ public class SolitaireRunner
  public static void main(String[] args) 
  {
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		int count = 0;
 	Deck deck = new Deck();
 	deck.shuffle();
 	PlayField playfield = new PlayField(deck);
-	System.out.println(playfield.waste.wasteFaceDown.size());
+	//System.out.println(playfield.waste.wasteFaceDown.size());
 	playfield.setUp();
-	System.out.println(playfield.waste.wasteFaceDown.size());
-
+	//System.out.println(playfield.waste.wasteFaceDown.size());
 
 	while (playfield.waste.wasteFaceDown.isEmpty() == false)
 	{
-		System.out.println("In the first for loop");
+		//System.out.println("In the first for loop");
 			while (playfield.stop == false)
 			{
-				System.out.println("In the second for loop");
+				//System.out.println("In the second for loop");
 				count ++;
 				playfield.draw2();
 				playfield.playCard();
 				playfield.MoveToFoundation();
 				
-				if (playfield.stop == true)
-				{
-					break;
-				}
+				
+			}
+			if (playfield.stop == true)
+			{
+				break;
 			}
 		
 
@@ -42,7 +42,7 @@ public class SolitaireRunner
 		wins++;
 	}
 
-	System.out.println("Count: " + count);
+	//System.out.println("Count: " + count);
 	}
 	System.out.println("Wins: " + wins);
  }

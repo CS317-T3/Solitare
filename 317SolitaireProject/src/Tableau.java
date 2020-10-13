@@ -106,13 +106,44 @@ ArrayList<Card> Tableau7;
 	   int tab5 = Tableau5.size();
 	   int tab6 = Tableau6.size();
 	   int tab7 = Tableau7.size();
-	   Card card1 = Tableau1.get(tab1 - 1);
-	   Card card2 = Tableau2.get(tab2 - 1);
-	   Card card3 = Tableau3.get(tab3 - 1);
-	   Card card4 = Tableau4.get(tab4 - 1);
-	   Card card5 = Tableau5.get(tab5 - 1);
-	   Card card6 = Tableau6.get(tab6 - 1);
-	   Card card7 = Tableau7.get(tab7 - 1);
+	   Card card1 = new Card ("Spades", "500", 500);
+	   Card card2 = new Card ("Spades", "500", 500);
+	   Card card3 = new Card ("Spades", "500", 500);
+	   Card card4 = new Card ("Spades", "500", 500);
+	   Card card5 = new Card ("Spades", "500", 500);
+	   Card card6 = new Card ("Spades", "500", 500);
+	   Card card7 = new Card ("Spades", "500", 500);
+	   if (tab1 != 0)
+	   {
+		    card1 = Tableau1.get(tab1 - 1);
+	   }
+	   if (tab2 != 0)
+	   {
+		    card2 = Tableau2.get(tab2 - 1);		   
+	   }
+	   if (tab3 != 0)
+	   {
+		   card3 = Tableau3.get(tab3 - 1);		   
+	   }
+	   if (tab4 != 0)
+	   {
+		    card4 = Tableau4.get(tab4 - 1);		
+	   }
+	   if (tab5 != 0)
+	   {
+		    card5 = Tableau5.get(tab5 - 1);	
+	   }
+	   if (tab6 != 0)
+	   {
+		    card6 = Tableau6.get(tab6 - 1);		   
+	   }
+
+	   if (tab7 != 0)
+	   {
+		    card7 = Tableau7.get(tab7 - 1);		   
+	   }
+
+	
 	   if (!card.getColor().equals(card1.getColor()) && card.getRank() == card1.getRank() - 1)
 	   {
 		   return 1;

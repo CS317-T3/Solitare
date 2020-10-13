@@ -7,6 +7,7 @@ Tableau tableau;
 Foundation foundation;
 boolean hasPlayed = false;
 boolean stop = false;
+int count = 0;
   public PlayField(Deck deck)
   {
 	  this.waste = new Waste(deck);
@@ -28,31 +29,27 @@ boolean stop = false;
   
   public void draw2()
   {
-	 Card card = waste.wasteFaceDown.peek();
+	 Card card = waste.wasteFaceDown.poll();
 	 waste.wasteFaceUp.push(card);
-	 waste.wasteFaceDown.remove(card);
+	
   }
 
   public void playCard()
   {
-	  int count = 0;
-	  try {
-
+	  //System.out.println("Count: " + count);
+	  
+	  if (!waste.wasteFaceDown.isEmpty())
+	  {
+		  
 
 	  Card card = waste.playCard();
-
 	  int canPlay = tableau.canPlay(card);
-	  if (canPlay == 0)
-	  {
-		  waste.wasteFaceDown.pop();
-		  waste.wasteFaceUp.push(card);
 
-	  }
 	  tableau.playCard(card, canPlay);
-  }
-	  catch (Exception NullPointerException)
+	  }
+	  else
 	  {
-		  System.out.println("Count: " + count);
+		  
 		  if (hasPlayed == false)
 		  {
 			  if (count == 3)
@@ -62,18 +59,20 @@ boolean stop = false;
 			  else
 			  {
 				  count++;
+				 
+				 //System.out.println("Size of waste: " + waste.wasteFaceUp.size());
 			  }
 		  }
 		  if (hasPlayed == true)
 		  {
 			  count = 0;
+			  hasPlayed = false;
 		  }
 		  for(int i = 0; i < waste.wasteFaceUp.size(); i ++)
-		  {
-			  
+		  {			  
 			  waste.wasteFaceDown.push(waste.wasteFaceUp.peek());
 			  waste.wasteFaceUp.pop();
-			  System.out.println("Moving face up to face down");
+			  //System.out.println("Moving face up to face down");
 		  }
 	  }
   }
@@ -174,10 +173,10 @@ boolean stop = false;
 		  tabCards.add(card8);
 	  }
 
-	  int count = 0;
+	  int count2 = 0;
 	  for (Card cardInList: tabCards)
 	  {
-		  count++;
+		  count2++;
 		  if (cardInList.getSuit().equals("Spades"))
 		  {
 			  int spadesSize = foundation.spades.size();
@@ -216,7 +215,7 @@ boolean stop = false;
 		  }
 	  }
 
-	  if (count == 1)
+	  if (count2 == 1)
 	  {
 		  int size = tableau.Tableau1.size();
 		  tableau.Tableau1.remove(size - 1);
@@ -229,7 +228,7 @@ boolean stop = false;
 		  }
 
 	  }
-	  else if (count == 2)
+	  else if (count2 == 2)
 	  {
 		  int size = tableau.Tableau2.size();
 		  tableau.Tableau2.remove(size - 1);
@@ -241,7 +240,7 @@ boolean stop = false;
 		  {	  
 		  }
 	  }
-	  else if (count == 3)
+	  else if (count2 == 3)
 	  {
 		  int size = tableau.Tableau3.size();
 		  tableau.Tableau3.remove(size - 1);
@@ -253,7 +252,7 @@ boolean stop = false;
 		  {	  
 		  }
 	  }
-	  else if (count == 4)
+	  else if (count2 == 4)
 	  {
 		  int size = tableau.Tableau4.size();
 		  tableau.Tableau4.remove(size - 1);
@@ -265,7 +264,7 @@ boolean stop = false;
 		  {	  
 		  }
 	  }
-	  else if (count == 5)
+	  else if (count2 == 5)
 	  {
 		  int size = tableau.Tableau5.size();
 		  tableau.Tableau5.remove(size - 1);
@@ -277,7 +276,7 @@ boolean stop = false;
 		  {	  
 		  }
 	  }
-	  else if (count == 6)
+	  else if (count2 == 6)
 	  {
 		  int size = tableau.Tableau6.size();
 		  tableau.Tableau6.remove(size - 1);
@@ -289,7 +288,7 @@ boolean stop = false;
 		  {	  
 		  }
 	  }
-	  else if (count == 7)
+	  else if (count2 == 7)
 	  {
 		  int size = tableau.Tableau7.size();
 		  tableau.Tableau7.remove(size - 1);
