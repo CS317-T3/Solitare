@@ -14,12 +14,14 @@ public class Deck
  LinkedList<Card> cardsInPlay;
  Queue cardsInDeck;
  Random r;
+
  
  public Deck() 
  {
 	 this.deck = new ArrayList<Card>();
 	 this.suits = new ArrayList<String>();
 	 this.number = new ArrayList<String>();
+	 this.rank = new ArrayList<Integer>();
 	 this.cardsInPlay = new LinkedList<Card>();
 	 this.r = new Random();
 	 this.suits.add("Spades");
@@ -56,12 +58,15 @@ public class Deck
 	 {
 		 for(String j : this.suits)
 		 {
-			 Card card = new Card(j , number.get(i), rank.get(i));
+			 Card card = new Card(j , number.get(i), i);
 			 this.deck.add(card);
 		 }
 	 }
  }
- 
+
+ /**
+  * This shuffle method shuffles the cards in the deck and puts them in linkned list called cardsInPlay
+  */
        public void shuffle()
    {
 	   for(int i = this.deck.size()- 1; i > 0; i--)
@@ -70,30 +75,34 @@ public class Deck
 		   Card temp = this.deck.get(i);
 		   this.deck.set(i, this.deck.get(j));
 		   this.deck.set(j, temp);
-		   
+
 	   }
 	   for(Card card: this.deck)
 	   {
 		   this.cardsInPlay.add(card);
 	   }
-	   
+
    }
-       public void display()
-       {
-    	   for(int i = 0; i < deck.size(); i++)
-    	   {
-    		   Card card = this.deck.get(i);
-    		   System.out.println(card.ToString());
-    	   }
-       }
-       
-       public Card draw()
+//       public void display()
+//       {
+//    	   for(int i = 0; i < deck.size(); i++)
+//    	   {
+//    		   Card card = this.deck.get(i);
+//    		   System.out.println(card.ToString());
+//    	   }
+//       }
+
+       /**
+        * This method takes the cardsInPlay linked list and returns the card at the top of the list
+        *
+        */
+    public Card draw()
        {
     	   Card card = this.cardsInPlay.peek();
-    	   System.out.println(card.ToString());
+    	   //System.out.println(card.ToString());
     	  return this.cardsInPlay.pop();
-    	   
-    	   
+
+
        }
- 
+
 }
