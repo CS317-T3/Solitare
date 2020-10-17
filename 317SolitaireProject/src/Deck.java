@@ -58,7 +58,7 @@ public class Deck
 	 {
 		 for(String j : this.suits)
 		 {
-			 Card card = new Card(j , number.get(i), rank.get(i));
+			 Card card = new Card(j , number.get(i), i + 1);
 			 this.deck.add(card);
 		 }
 	 }

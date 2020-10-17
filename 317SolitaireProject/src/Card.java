@@ -119,9 +119,10 @@ public void setFaceUp(boolean faceUp) {
  * this method returns a string of what the card is
  * @return
  */
+
 public String ToString()
 {
-	return number + " " + suit + "\n";
+	return number + " " + suit + "rank: " + rank +  "\n";
 }
  
 }

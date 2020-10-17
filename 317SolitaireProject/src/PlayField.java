@@ -38,7 +38,7 @@ int count = 0;
    */
   public void draw2()
   {
-	 Card card = waste.wasteFaceDown.poll();
+	 Card card = waste.wasteFaceDown.removeLast();
 	 waste.wasteFaceUp.push(card);
 	
   }
@@ -51,7 +51,7 @@ int count = 0;
   {
 	  //System.out.println("Count: " + count);
 	  
-	  if (!waste.wasteFaceDown.isEmpty())
+	  if (!waste.wasteFaceUp.isEmpty() && !waste.wasteFaceDown.isEmpty())
 	  {
 		  
 
@@ -108,213 +108,162 @@ int count = 0;
 	  if (card.getSuit().equals("Spades"))
 	  {
 		  int spadesSize = foundation.spades.size();
-		  if (card.getRank() == spadesSize + 1)
+		  System.out.println("THIS IS THE SPADES SIZE: " + spadesSize);
+		 
+		  if (spadesSize == 0)
 		  {
+			  if (card.getRank() == 1)
+			  {
+				  foundation.spades.add(card);
+				  waste.wasteFaceUp.pop();
+				  hasPlayed = true;
+			  }
+		  } 
+		  else if  (spadesSize > 0 && card.getRank() == spadesSize + 1)
+		  {
+		 
 			  foundation.spades.add(card);
+			  try
+			  {
 			  waste.wasteFaceUp.pop();
+			  }
+			  catch(Exception StackEmptyException)
+			  {
+				  
+			  }
 			  hasPlayed = true;
+		  
 		  }
-	  }
+		  }
+	  
 	  else if (card.getSuit().equals("Clubs"))
 	  {
-		  int spadesSize = foundation.clubs.size();
-		  if (card.getRank() == spadesSize + 1)
+		  int clubsSize = foundation.clubs.size();
+		  System.out.println("THIS IS THE CLUBS SIZE: " + clubsSize);
+		  
+		  if (clubsSize == 0)
 		  {
+			  if (card.getRank() == 1)
+			  {
+				  foundation.clubs.add(card);
+				  waste.wasteFaceUp.pop();
+				  hasPlayed = true;
+			  }
+		  }
+		  else if (clubsSize > 0 && card.getRank() == clubsSize +1)
+		  {
+			  
+		  
+		
 			  foundation.clubs.add(card);
 			  waste.wasteFaceUp.pop();
 			  hasPlayed = true;
+		  
 		  }
+		  
 	  }
 	  else if (card.getSuit().equals("Hearts"))
 	  {
-		  int spadesSize = foundation.hearts.size();
-		  if (card.getRank() == spadesSize + 1)
+		  
+		  int heartsSize = foundation.hearts.size();
+		  System.out.println("THIS IS THE HEARTS SIZE: " + heartsSize);
+		 
+		  if (heartsSize == 0)
 		  {
+			  if (card.getRank() == 1)
+			  {
+				  foundation.hearts.add(card);
+				  waste.wasteFaceUp.pop();
+				  hasPlayed = true;
+			  }
+		  }
+		  else if (heartsSize > 0 && card.getRank() == heartsSize + 1)
+		  {
+		  
+		  
 			  foundation.hearts.add(card);
 			  waste.wasteFaceUp.pop();
 			  hasPlayed = true;
+		  
 		  }
+		  
 	  }
 	  else if (card.getSuit().equals("Diamonds"))
 	  {
-		  int spadesSize = foundation.diamonds.size();
-		  if (card.getRank() == spadesSize + 1)
+		  int diamondsSize = foundation.diamonds.size();
+		  System.out.println("THIS IS THE DIAMONDS SIZE: " + diamondsSize);
+		 
+		  if (diamondsSize == 0)
 		  {
+			  if (card.getRank() == 1)
+			  {
+				  foundation.diamonds.add(card);
+				  waste.wasteFaceUp.pop();
+				  hasPlayed = true;
+			  }
+		  }
+		  else if (diamondsSize > 0 && card.getRank() == diamondsSize +1)
+		  {
+		 
 			  foundation.diamonds.add(card);
 			  waste.wasteFaceUp.pop();
 			  hasPlayed = true;
+		  
 		  }
+		  
 	  }
 
-	  int tabSize1 = tableau.Tableau1.size();
-	  int tabSize2 = tableau.Tableau2.size();
-	  int tabSize3 = tableau.Tableau3.size();
-	  int tabSize4 = tableau.Tableau4.size();
-	  int tabSize5 = tableau.Tableau5.size();
-	  int tabSize6 = tableau.Tableau6.size();
-	  int tabSize7 = tableau.Tableau7.size();
-	  ArrayList<Card> tabCards = new ArrayList<Card>();
-	  if (tableau.Tableau1.size() >= 1)
+	  Card card2;
+	  for(int i = 0; i < tableau.Tableaus.size(); i++)
 	  {
-		  Card card2 = tableau.Tableau1.get(tabSize1 -1);
-		  tabCards.add(card2);
-	  }
-	  if (tableau.Tableau2.size() >= 1)
-	  {
-		  Card card3 = tableau.Tableau2.get(tabSize2 -1);
-		  tabCards.add(card3);
-	  }
-	  if (tableau.Tableau3.size() >= 1)
-	  {
-		  Card card4 = tableau.Tableau3.get(tabSize3 -1);
-		  tabCards.add(card4);
-	  }
-	  if (tableau.Tableau4.size() >= 1)
-	  {
-		  Card card5 = tableau.Tableau4.get(tabSize4 -1);
-		  tabCards.add(card5);
-	  }
-	  if (tableau.Tableau5.size() >= 1)
-	  {
-		  Card card6 = tableau.Tableau5.get(tabSize5 -1);
-		  tabCards.add(card6);
-	  }
-	  if (tableau.Tableau6.size() >= 1)
-	  {
-		  Card card7 = tableau.Tableau6.get(tabSize6 -1);
-		  tabCards.add(card7);
-	  }
-	  if (tableau.Tableau7.size() >= 1)
-	  {
-		  Card card8 = tableau.Tableau7.get(tabSize7 -1);
-		  tabCards.add(card8);
-	  }
-
-	  int count2 = 0;
-	  for (Card cardInList: tabCards)
-	  {
-		  count2++;
-		  if (cardInList.getSuit().equals("Spades"))
+		  int tabSize = tableau.Tableaus.get(i).size();
+		  if(tableau.Tableaus.get(i).size() > 1)
+		  {
+			  card2 = tableau.Tableaus.get(i).get(tabSize - 1);
+		  }
+		  else
+		  {
+			  card2 = new Card("Spades", "300", 300);
+		  }
+		  if (card2.getSuit().equals("Spades"))
 		  {
 			  int spadesSize = foundation.spades.size();
-			  if (cardInList.getRank() == spadesSize + 1)
+			  if (card2.getRank() == spadesSize + 1)
 			  {
-				  foundation.spades.add(card);
+				  foundation.spades.add(card2);
 				  hasPlayed = true;
+				  tableau.Tableaus.get(i).remove(tabSize - 1);
 			  }
 		  }
-		  if (cardInList.getSuit().equals("Clubs"))
+		  if (card2.getSuit().equals("Clubs"))
 		  {
 			  int clubsSize = foundation.clubs.size();
-			  if (cardInList.getRank() == clubsSize + 1)
+			  if (card2.getRank() == clubsSize + 1)
 			  {
-				  foundation.clubs.add(card);
+				  foundation.clubs.add(card2);
 				  hasPlayed = true;
+				  tableau.Tableaus.get(i).remove(tabSize - 1);
 			  }
 		  }
-		  if (cardInList.getSuit().equals("Hearts"))
+		  if (card2.getSuit().equals("Hearts"))
 		  {
 			  int heartsSize = foundation.hearts.size();
-			  if (cardInList.getRank() == heartsSize + 1)
+			  if (card2.getRank() == heartsSize + 1)
 			  {
-				  foundation.hearts.add(card);
+				  foundation.hearts.add(card2);
 				  hasPlayed = true;
+				  tableau.Tableaus.get(i).remove(tabSize - 1);
 			  }
 		  }
-		  if (cardInList.getSuit().equals("Diamonds"))
+		  if (card2.getSuit().equals("Diamonds"))
 		  {
 			  int diamondsSize = foundation.spades.size();
-			  if (cardInList.getRank() == diamondsSize + 1)
+			  if (card2.getRank() == diamondsSize + 1)
 			  {
-				  foundation.diamonds.add(card);
+				  foundation.diamonds.add(card2);
 				  hasPlayed = true;
+				  tableau.Tableaus.get(i).remove(tabSize - 1);
 			  }
-		  }
-	  }
-
-	  if (count2 == 1)
-	  {
-		  int size = tableau.Tableau1.size();
-		  tableau.Tableau1.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau1.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-
-	  }
-	  else if (count2 == 2)
-	  {
-		  int size = tableau.Tableau2.size();
-		  tableau.Tableau2.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau2.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-	  }
-	  else if (count2 == 3)
-	  {
-		  int size = tableau.Tableau3.size();
-		  tableau.Tableau3.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau3.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-	  }
-	  else if (count2 == 4)
-	  {
-		  int size = tableau.Tableau4.size();
-		  tableau.Tableau4.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau4.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-	  }
-	  else if (count2 == 5)
-	  {
-		  int size = tableau.Tableau5.size();
-		  tableau.Tableau5.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau5.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-	  }
-	  else if (count2 == 6)
-	  {
-		  int size = tableau.Tableau6.size();
-		  tableau.Tableau6.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau6.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
-		  }
-	  }
-	  else if (count2 == 7)
-	  {
-		  int size = tableau.Tableau7.size();
-		  tableau.Tableau7.remove(size - 1);
-		  try {
-			  Card newCard = tableau.Tableau7.get(size-1);
-			  newCard.setFaceUp(true);
-		  }
-		  catch(Exception NullPointerException)
-		  {	  
 		  }
 	  }
 
