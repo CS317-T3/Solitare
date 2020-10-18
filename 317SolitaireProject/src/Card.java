@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * @author rvang001
@@ -10,6 +11,7 @@ public class Card
  int rank;
  boolean faceUp;
  String color;
+ ArrayList<Card> hasBeen = new ArrayList<>();
  
  public Card(String suit, String number, int rank)
  {
@@ -37,7 +39,10 @@ public int getRank() {
 	return rank;
 }
 
-
+public void hasBeen(Card card)
+{
+	hasBeen.add(card);
+}
 
 /**
  * this method takes an integer as a parameter and sets the card rank to the parameter received
@@ -47,7 +52,18 @@ public void setRank(int rank) {
 	this.rank = rank;
 }
 
-
+public boolean equals(Card compare)
+{
+	if (this.rank == compare.getRank() && this.suit.equals(compare.getSuit()))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+		
+}
 
 /**
  * this method returns the color of the card in a string

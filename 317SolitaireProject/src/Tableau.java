@@ -11,6 +11,7 @@ ArrayList<Card> Tableau5;
 ArrayList<Card> Tableau6;
 ArrayList<Card> Tableau7;
 ArrayList<ArrayList<Card>> Tableaus;
+Card lastCard = new Card("Spades", "300", 300);
 
    public Tableau(Deck deck, Waste waste)
    {
@@ -75,6 +76,98 @@ ArrayList<ArrayList<Card>> Tableaus;
 	   Tableaus.add(Tableau6);
 	   Tableaus.add(Tableau7);
 	   
+   }
+   
+   public boolean priority()
+   {
+	   
+	   Card card;
+	   for (int i = 7; i >= 1 ; i--)
+	   {
+		   int size = Tableaus.get(i - 1).size();
+		   if (size != 0)
+		   {
+			   Card hasBeen = Tableaus.get(i - 1).get(size - 1);
+			   card = Tableaus.get(i - 1).get(size - 1);
+			   card.hasBeen.add(hasBeen);
+		   }
+		   else
+		   {
+			   card = new Card("Spades", "300", 300);
+		   }
+		   for (ArrayList<Card> tab: Tableaus)
+		   {
+			   Card compare;
+			   int sizeOfComparison = tab.size();
+			   if (sizeOfComparison != 0)
+			   {
+				   compare = tab.get(sizeOfComparison - 1);
+			   }
+			   else
+			   {
+				   compare = new Card("Spades", "300", 300);
+			   }
+			   if (!card.getColor().equals(compare.getColor()) && card.getRank() == compare.getRank() - 1 
+					   && card.equals(lastCard) == false && !card.hasBeen.contains(compare))
+			   {
+				   tab.add(card);
+				   lastCard = card;
+				   Tableaus.get(i - 1).remove(card);
+				   return true;
+			   }
+			   
+		   }
+	   }
+	   return false;
+   }
+   
+   //SOMEONE CAN DOUBLE CHECK TO MAKE SURE THIS FUNCTION IS IMPLEMENTED CORRECTLY
+   public boolean moveStack()
+   {
+	   Card card = new Card("Spades", "300", 300);
+	  
+	   for (int i = 7; i >= 1; i--)
+	   {
+		   ArrayList<Card> moveStack = new ArrayList<>();
+		   int size = Tableaus.get(i - 1).size();
+		   if (size != 0)
+		   {
+			   for (Card cardInTab: Tableaus.get(i - 1))
+			   {
+				   if(card.faceUp)
+				   {
+					   moveStack.add(cardInTab);
+				   }
+			   }
+			   for(ArrayList<Card> tab: Tableaus)
+			   {
+				   int tabSize = tab.size();
+				   if (tabSize > 1 && moveStack.size() > 1)
+				   {
+					   
+					   if(!tab.get(tabSize - 1).getSuit().equals(moveStack.get(0).getSuit()) && tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
+							  && !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor()))
+					   {
+						   tab.addAll(moveStack);
+						   Tableaus.get(i - 1).removeAll(moveStack);
+						   return true;
+					   }
+				   }
+				   else
+				   {
+					   
+				   }
+			   }
+			   
+		   }
+		   else
+		   {
+			   
+		   }
+		   
+		   
+	   }
+	   return false;
    }
    
    /**

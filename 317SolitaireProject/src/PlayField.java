@@ -57,8 +57,11 @@ int count = 0;
 
 	  Card card = waste.playCard();
 	  int canPlay = tableau.canPlay(card);
-
 	  tableau.playCard(card, canPlay);
+	  if (canPlay != 0)
+	  {
+		  waste.wasteFaceUp.pop();
+	  }
 	  }
 	  else
 	  {
@@ -68,6 +71,14 @@ int count = 0;
 			  if (count == 3)
 			  {
 				  stop = true;
+			  }
+			  else if(count == 1 || count == 2)
+			  {
+				  boolean check = tableau.priority();
+				  if (check == true)
+				  {
+					  hasPlayed = true;
+				  }
 			  }
 			  else
 			  {
@@ -81,12 +92,15 @@ int count = 0;
 			  count = 0;
 			  hasPlayed = false;
 		  }
-		  for(int i = 0; i < waste.wasteFaceUp.size(); i ++)
-		  {			  
-			  waste.wasteFaceDown.push(waste.wasteFaceUp.peek());
-			  waste.wasteFaceUp.pop();
-			  //System.out.println("Moving face up to face down");
-		  }
+		  waste.wasteFaceDown.addAll(waste.wasteFaceUp);
+		  waste.wasteFaceUp.removeAllElements();
+//		  for(int i = 0; i < waste.wasteFaceUp.size(); i ++)
+//		  {			  
+//			  waste.wasteFaceDown.push(waste.wasteFaceUp.pop());
+//
+//			  
+//			  //System.out.println("Moving face up to face down");
+//		  }
 	  }
   }
 
@@ -217,7 +231,7 @@ int count = 0;
 	  for(int i = 0; i < tableau.Tableaus.size(); i++)
 	  {
 		  int tabSize = tableau.Tableaus.get(i).size();
-		  if(tableau.Tableaus.get(i).size() > 1)
+		  if(tableau.Tableaus.get(i).size() >= 1)
 		  {
 			  card2 = tableau.Tableaus.get(i).get(tabSize - 1);
 		  }
@@ -232,7 +246,7 @@ int count = 0;
 			  {
 				  foundation.spades.add(card2);
 				  hasPlayed = true;
-				  tableau.Tableaus.get(i).remove(tabSize - 1);
+				  tableau.Tableaus.get(i).remove(card2);
 			  }
 		  }
 		  if (card2.getSuit().equals("Clubs"))
@@ -242,7 +256,7 @@ int count = 0;
 			  {
 				  foundation.clubs.add(card2);
 				  hasPlayed = true;
-				  tableau.Tableaus.get(i).remove(tabSize - 1);
+				  tableau.Tableaus.get(i).remove(card2);
 			  }
 		  }
 		  if (card2.getSuit().equals("Hearts"))
@@ -252,17 +266,17 @@ int count = 0;
 			  {
 				  foundation.hearts.add(card2);
 				  hasPlayed = true;
-				  tableau.Tableaus.get(i).remove(tabSize - 1);
+				  tableau.Tableaus.get(i).remove(card2);
 			  }
 		  }
 		  if (card2.getSuit().equals("Diamonds"))
 		  {
-			  int diamondsSize = foundation.spades.size();
+			  int diamondsSize = foundation.diamonds.size();
 			  if (card2.getRank() == diamondsSize + 1)
 			  {
 				  foundation.diamonds.add(card2);
 				  hasPlayed = true;
-				  tableau.Tableaus.get(i).remove(tabSize - 1);
+				  tableau.Tableaus.get(i).remove(card2);
 			  }
 		  }
 	  }

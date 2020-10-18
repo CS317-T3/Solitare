@@ -58,9 +58,14 @@ public class SolitaireRunner
 				}
 				
 				count ++;
-				playfield.draw2();
+				
 				playfield.playCard();
 				playfield.MoveToFoundation();
+				playfield.playCard();
+				playfield.MoveToFoundation();
+				playfield.playCard();
+				playfield.MoveToFoundation();
+				playfield.draw2();
 				System.out.println("\nCLUBS FOUNDATION: ");
 				for (Card card: playfield.foundation.clubs) {
 					System.out.print(card.ToString());
