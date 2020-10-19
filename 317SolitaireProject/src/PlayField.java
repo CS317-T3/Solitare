@@ -38,8 +38,14 @@ int count = 0;
    */
   public void draw2()
   {
+	  try {
 	 Card card = waste.wasteFaceDown.removeLast();
 	 waste.wasteFaceUp.push(card);
+	  }
+	  catch (Exception NoSuchElementException)
+	  {
+		  
+	  }
 	
   }
 
@@ -72,25 +78,19 @@ int count = 0;
 			  {
 				  stop = true;
 			  }
-			  else if(count == 1 || count == 2)
-			  {
-				  boolean check = tableau.priority();
-				  if (check == true)
-				  {
-					  hasPlayed = true;
-				  }
-			  }
 			  else
 			  {
 				  count++;
+				  tableau.moveStack();
 				 
-				 //System.out.println("Size of waste: " + waste.wasteFaceUp.size());
+				 //System.out.println("COUNT: " + count);
 			  }
 		  }
 		  if (hasPlayed == true)
 		  {
 			  count = 0;
 			  hasPlayed = false;
+			  //System.out.println("RESETTING COUNT!!!");
 		  }
 		  waste.wasteFaceDown.addAll(waste.wasteFaceUp);
 		  waste.wasteFaceUp.removeAllElements();
@@ -122,7 +122,7 @@ int count = 0;
 	  if (card.getSuit().equals("Spades"))
 	  {
 		  int spadesSize = foundation.spades.size();
-		  System.out.println("THIS IS THE SPADES SIZE: " + spadesSize);
+		  //System.out.println("THIS IS THE SPADES SIZE: " + spadesSize);
 		 
 		  if (spadesSize == 0)
 		  {
@@ -153,7 +153,7 @@ int count = 0;
 	  else if (card.getSuit().equals("Clubs"))
 	  {
 		  int clubsSize = foundation.clubs.size();
-		  System.out.println("THIS IS THE CLUBS SIZE: " + clubsSize);
+		  //System.out.println("THIS IS THE CLUBS SIZE: " + clubsSize);
 		  
 		  if (clubsSize == 0)
 		  {
@@ -180,7 +180,7 @@ int count = 0;
 	  {
 		  
 		  int heartsSize = foundation.hearts.size();
-		  System.out.println("THIS IS THE HEARTS SIZE: " + heartsSize);
+		  //System.out.println("THIS IS THE HEARTS SIZE: " + heartsSize);
 		 
 		  if (heartsSize == 0)
 		  {
@@ -205,7 +205,7 @@ int count = 0;
 	  else if (card.getSuit().equals("Diamonds"))
 	  {
 		  int diamondsSize = foundation.diamonds.size();
-		  System.out.println("THIS IS THE DIAMONDS SIZE: " + diamondsSize);
+		  //System.out.println("THIS IS THE DIAMONDS SIZE: " + diamondsSize);
 		 
 		  if (diamondsSize == 0)
 		  {
@@ -247,6 +247,14 @@ int count = 0;
 				  foundation.spades.add(card2);
 				  hasPlayed = true;
 				  tableau.Tableaus.get(i).remove(card2);
+				  try {
+					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
+				  }
+				  catch (Exception NullPointerException)
+				  {
+					  
+				  }
+				  
 			  }
 		  }
 		  if (card2.getSuit().equals("Clubs"))
@@ -257,6 +265,13 @@ int count = 0;
 				  foundation.clubs.add(card2);
 				  hasPlayed = true;
 				  tableau.Tableaus.get(i).remove(card2);
+				  try {
+					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
+				  }
+				  catch (Exception NullPointerException)
+				  {
+					  
+				  }
 			  }
 		  }
 		  if (card2.getSuit().equals("Hearts"))
@@ -267,6 +282,13 @@ int count = 0;
 				  foundation.hearts.add(card2);
 				  hasPlayed = true;
 				  tableau.Tableaus.get(i).remove(card2);
+				  try {
+					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
+				  }
+				  catch (Exception NullPointerException)
+				  {
+					  
+				  }
 			  }
 		  }
 		  if (card2.getSuit().equals("Diamonds"))
@@ -277,6 +299,13 @@ int count = 0;
 				  foundation.diamonds.add(card2);
 				  hasPlayed = true;
 				  tableau.Tableaus.get(i).remove(card2);
+				  try {
+					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
+				  }
+				  catch (Exception NullPointerException)
+				  {
+					  
+				  }
 			  }
 		  }
 	  }

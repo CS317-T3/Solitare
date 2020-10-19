@@ -138,7 +138,7 @@ public void setFaceUp(boolean faceUp) {
 
 public String ToString()
 {
-	return number + " " + suit + "rank: " + rank +  "\n";
+	return number + " " + suit + " rank: " + rank +  " faceUp: " + faceUp + "\n";
 }
  
 }

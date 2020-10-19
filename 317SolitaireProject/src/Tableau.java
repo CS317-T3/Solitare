@@ -121,54 +121,104 @@ Card lastCard = new Card("Spades", "300", 300);
 	   return false;
    }
    
-   //SOMEONE CAN DOUBLE CHECK TO MAKE SURE THIS FUNCTION IS IMPLEMENTED CORRECTLY
-   public boolean moveStack()
+   public boolean hasFaceDown(int tab)
    {
-	   Card card = new Card("Spades", "300", 300);
-	  
-	   for (int i = 7; i >= 1; i--)
+	   ArrayList<Card> tableau = Tableaus.get(tab);
+	   for (Card card: tableau)
 	   {
-		   ArrayList<Card> moveStack = new ArrayList<>();
-		   int size = Tableaus.get(i - 1).size();
-		   if (size != 0)
+		   if (card.isFaceUp() == false)
 		   {
-			   for (Card cardInTab: Tableaus.get(i - 1))
-			   {
-				   if(card.faceUp)
-				   {
-					   moveStack.add(cardInTab);
-				   }
-			   }
-			   for(ArrayList<Card> tab: Tableaus)
-			   {
-				   int tabSize = tab.size();
-				   if (tabSize > 1 && moveStack.size() > 1)
-				   {
-					   
-					   if(!tab.get(tabSize - 1).getSuit().equals(moveStack.get(0).getSuit()) && tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
-							  && !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor()))
-					   {
-						   tab.addAll(moveStack);
-						   Tableaus.get(i - 1).removeAll(moveStack);
-						   return true;
-					   }
-				   }
-				   else
-				   {
-					   
-				   }
-			   }
-			   
+			   return true;
 		   }
-		   else
-		   {
-			   
-		   }
-		   
-		   
 	   }
 	   return false;
    }
+   
+   //SOMEONE CAN DOUBLE CHECK TO MAKE SURE THIS FUNCTION IS IMPLEMENTED CORRECTLY
+	public boolean moveStack() {
+
+		for (int i = 7; i >= 1; i--) {
+			ArrayList<Card> moveStack = new ArrayList<>();
+			int size = Tableaus.get(i - 1).size();
+			if (size != 0) {
+				for (Card cardInTab : Tableaus.get(i - 1)) {
+					if (cardInTab.isFaceUp() == true) {
+						moveStack.add(cardInTab);
+					}
+				}
+				for (ArrayList<Card> tab : Tableaus) {
+					boolean same = false;
+					if (Tableaus.get(i - 1).equals(tab)) {
+						same = true;
+					}
+					if (same == false) {
+
+						int tabSize = tab.size();
+						// System.out.println("MoveStacck size: " + moveStack.size());
+						if (tabSize >= 2 && moveStack.size() >= 1) {
+							if (tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
+									&& !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor())) {
+								if (this.hasFaceDown(i - 1) == true) {
+									tab.addAll(moveStack);
+									Tableaus.get(i - 1).removeAll(moveStack);
+								}
+								int newSize = Tableaus.get(i - 1).size();
+
+								if (newSize != 0) {
+									// System.out.println("SETTING THIS CARD FACE UP TRUE: " + Tableaus.get(i -
+									// 1).get(newSize - 1).ToString());
+									// System.out.println("New size: " + newSize);
+									Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
+								}
+								return true;
+							}
+						} else if (tabSize == 1 && moveStack.size() >= 1) {
+							if (tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
+									&& !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor())) {
+								if (this.hasFaceDown(i - 1) == true) {
+									tab.addAll(moveStack);
+									Tableaus.get(i - 1).removeAll(moveStack);
+								}
+								int newSize = Tableaus.get(i - 1).size();
+
+								if (newSize != 0) {
+									// System.out.println("SETTING THIS CARD FACE UP TRUE: " + Tableaus.get(i -
+									// 1).get(newSize - 1).ToString());
+									// System.out.println("New size: " + newSize);
+									Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
+								}
+								return true;
+							}
+						} else if (tabSize == 0) {
+							if (this.hasFaceDown(i - 1) == true) {
+								tab.addAll(moveStack);
+								Tableaus.get(i - 1).removeAll(moveStack);
+							}
+							int newSize = Tableaus.get(i - 1).size();
+
+							if (newSize != 0) {
+
+								// System.out.println("SETTING THIS CARD FACE UP TRUE: " + Tableaus.get(i -
+								// 1).get(newSize - 1).ToString());
+								// System.out.println("New size: " + newSize);
+
+								Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
+							}
+
+							return true;
+
+						}
+
+					} else {
+
+					}
+				}
+			}
+
+		}
+
+		return false;
+	}
    
    /**
     * this method takes a card and tableau as a parameter, the card will be placed in a specific tableau based on what integer was passed
