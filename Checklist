@@ -8,7 +8,7 @@
 - [X] Set up and use communication tools and processes for effective and rapid information exchange.
 - [X] Use these tools and processes regularly.
 - [X] Establish and use remote communication tools and processes for distributed team interactions.
-- [ ] Establish and use initiation and exit checklists.
+- [x] Establish and use initiation and exit checklists.
 - [X] Establish and use team policy statement.
 
 **Testing:**
@@ -20,8 +20,8 @@
 - [ ] Create and regularly use unit testing.
 - [ ] Use a pull-request, code-review integration process for source changes.
 - [ ] Automatically monitor and report code coverage.
-- [ ] Use test-driven development.
-- [ ] Measure and track software performance.
+- [x] Use test-driven development.
+- [x] Measure and track software performance.
 
 **Requirements and Analsys:**
 - [X] Create user stories to capture basic product requirements.
@@ -41,7 +41,7 @@
 - [X] Conduct regular project meetings to assess progress and manage schedule.
 - [X] Use code formatting tool to assure uniform source code.
 - [X] Identify and use a coding convention.
-- [ ] Develop in-source comments that can be used to generate documentation, e.g., Javadoc or Doxygen.
+- [x] Develop in-source comments that can be used to generate documentation, e.g., Javadoc or Doxygen.
 
 **Product Release:**
 - [ ] Create a unique and traceable release of your software product.
