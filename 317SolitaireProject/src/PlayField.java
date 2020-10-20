@@ -8,10 +8,11 @@ Foundation foundation;
 boolean hasPlayed = false;
 boolean stop = false;
 int count = 0;
+int countMoves = 0;
   public PlayField(Deck deck)
   {
 	  this.waste = new Waste(deck);
-	  this.tableau = new Tableau(deck, waste);
+	  this.tableau = new Tableau(deck, waste, this);
 	  this.foundation = new Foundation(deck);
   }
 
@@ -130,6 +131,7 @@ int count = 0;
 			  {
 				  foundation.spades.add(card);
 				  waste.wasteFaceUp.pop();
+				  countMoves++;
 				  hasPlayed = true;
 			  }
 		  } 
@@ -140,6 +142,7 @@ int count = 0;
 			  try
 			  {
 			  waste.wasteFaceUp.pop();
+			  countMoves++;
 			  }
 			  catch(Exception StackEmptyException)
 			  {
@@ -161,6 +164,7 @@ int count = 0;
 			  {
 				  foundation.clubs.add(card);
 				  waste.wasteFaceUp.pop();
+				  countMoves++;
 				  hasPlayed = true;
 			  }
 		  }
@@ -171,6 +175,7 @@ int count = 0;
 		
 			  foundation.clubs.add(card);
 			  waste.wasteFaceUp.pop();
+			  countMoves++;
 			  hasPlayed = true;
 		  
 		  }
@@ -188,6 +193,7 @@ int count = 0;
 			  {
 				  foundation.hearts.add(card);
 				  waste.wasteFaceUp.pop();
+				  countMoves++;
 				  hasPlayed = true;
 			  }
 		  }
@@ -197,6 +203,7 @@ int count = 0;
 		  
 			  foundation.hearts.add(card);
 			  waste.wasteFaceUp.pop();
+			  countMoves++;
 			  hasPlayed = true;
 		  
 		  }
@@ -213,6 +220,7 @@ int count = 0;
 			  {
 				  foundation.diamonds.add(card);
 				  waste.wasteFaceUp.pop();
+				  countMoves++;
 				  hasPlayed = true;
 			  }
 		  }
@@ -221,6 +229,7 @@ int count = 0;
 		 
 			  foundation.diamonds.add(card);
 			  waste.wasteFaceUp.pop();
+			  countMoves++;
 			  hasPlayed = true;
 		  
 		  }
@@ -246,6 +255,7 @@ int count = 0;
 			  {
 				  foundation.spades.add(card2);
 				  hasPlayed = true;
+				  countMoves++;
 				  tableau.Tableaus.get(i).remove(card2);
 				  try {
 					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
@@ -264,6 +274,7 @@ int count = 0;
 			  {
 				  foundation.clubs.add(card2);
 				  hasPlayed = true;
+				  countMoves++;
 				  tableau.Tableaus.get(i).remove(card2);
 				  try {
 					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
@@ -281,6 +292,7 @@ int count = 0;
 			  {
 				  foundation.hearts.add(card2);
 				  hasPlayed = true;
+				  countMoves++;
 				  tableau.Tableaus.get(i).remove(card2);
 				  try {
 					  tableau.Tableaus.get(i).get(tabSize - 2).setFaceUp(true);
@@ -297,6 +309,7 @@ int count = 0;
 			  if (card2.getRank() == diamondsSize + 1)
 			  {
 				  foundation.diamonds.add(card2);
+				  countMoves++;
 				  hasPlayed = true;
 				  tableau.Tableaus.get(i).remove(card2);
 				  try {

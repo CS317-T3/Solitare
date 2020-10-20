@@ -1,11 +1,15 @@
 public class SolitaireRunner
 {
+	
 	static int wins = 0;
  public static void main(String[] args) 
  {
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
+		long startTime = 0;
+		long stopTime = 0;
+		startTime = System.currentTimeMillis();
 		int count = 0;
 	Deck deck = new Deck();
 	deck.shuffle();
@@ -14,12 +18,13 @@ public class SolitaireRunner
 	playfield.setUp();
 	//System.out.println(playfield.waste.wasteFaceDown.size());
 	//System.out.println("Starting the game");
+	
 	while (playfield.foundation.spades.size() < 13 && playfield.foundation.hearts.size() < 13 
 			&& playfield.foundation.clubs.size() < 13 &&playfield.foundation.diamonds.size() < 13 && playfield.stop == false)
 	{
 		//System.out.println("In the first for loop");
 			
-				//System.out.println("In the second for loop");
+				
 //				System.out.println("\nThis is the waste face DOWN:");
 //				for (Card card: playfield.waste.wasteFaceDown) {
 //					System.out.print(card.ToString());
@@ -62,11 +67,9 @@ public class SolitaireRunner
 				playfield.draw2();
 				playfield.MoveToFoundation();
 				playfield.playCard();
-				boolean play = playfield.tableau.moveStack();
-				if (play == true)
-				{
-					playfield.hasPlayed = true;
-				}
+				playfield.tableau.moveStack();
+				
+				
 				
 				
 //				System.out.println("\nCLUBS FOUNDATION: ");
@@ -98,11 +101,16 @@ public class SolitaireRunner
 	if (playfield.stop == false)
 	{
 		//System.out.println("Won a game");
+		System.out.println("Moves in a win: " + playfield.countMoves);
 		wins++;
 	}
 
 	//System.out.println("Count: " + count);\
+	stopTime = System.currentTimeMillis();
+	long totalTime = stopTime - startTime;
+	System.out.println("Total time in milliseconds: " + totalTime);
 	}
+	
 	System.out.println("Wins: " + wins);
  }
 }

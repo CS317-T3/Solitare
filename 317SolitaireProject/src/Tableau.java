@@ -3,6 +3,7 @@ public class Tableau
 {
 Deck deck;
 Waste waste;
+PlayField playfield;
 ArrayList<Card> Tableau1;
 ArrayList<Card> Tableau2;
 ArrayList<Card> Tableau3;
@@ -13,10 +14,11 @@ ArrayList<Card> Tableau7;
 ArrayList<ArrayList<Card>> Tableaus;
 Card lastCard = new Card("Spades", "300", 300);
 
-   public Tableau(Deck deck, Waste waste)
+   public Tableau(Deck deck, Waste waste, PlayField playfield)
    {
 	   this.deck = deck;
 	   this.waste = waste;
+	   this.playfield = playfield;
 	   this.Tableau1 = new ArrayList<Card>();
 	   this.Tableau2 = new ArrayList<Card>();
 	   this.Tableau3 = new ArrayList<Card>();
@@ -128,14 +130,33 @@ Card lastCard = new Card("Spades", "300", 300);
 	   {
 		   if (card.isFaceUp() == false)
 		   {
+			   //System.out.println("HASFACEDOWN: TRUE");
 			   return true;
 		   }
 	   }
+	   //System.out.println("HASFACEDOWN: FALSE");
 	   return false;
    }
    
+   public boolean sameTab(ArrayList<Card> tab, ArrayList<Card> compareTab)
+   {
+	   boolean same = false;
+	   if (tab.size() == compareTab.size())
+	   {
+		   for (Card card: tab)
+		   {
+			   if(compareTab.contains(card))
+			   {
+				   same = true;
+			   }
+		   }
+	   }
+	   //System.out.println("SAME? " + same);
+	   return same;
+   }
+   
    //SOMEONE CAN DOUBLE CHECK TO MAKE SURE THIS FUNCTION IS IMPLEMENTED CORRECTLY
-	public boolean moveStack() {
+	public void moveStack() {
 
 		for (int i = 7; i >= 1; i--) {
 			ArrayList<Card> moveStack = new ArrayList<>();
@@ -147,21 +168,17 @@ Card lastCard = new Card("Spades", "300", 300);
 					}
 				}
 				for (ArrayList<Card> tab : Tableaus) {
-					boolean same = false;
-					if (Tableaus.get(i - 1).equals(tab)) {
-						same = true;
-					}
-					if (same == false) {
+					
 
 						int tabSize = tab.size();
 						// System.out.println("MoveStacck size: " + moveStack.size());
 						if (tabSize >= 2 && moveStack.size() >= 1) {
 							if (tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
 									&& !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor())) {
-								if (this.hasFaceDown(i - 1) == true) {
+								
 									tab.addAll(moveStack);
 									Tableaus.get(i - 1).removeAll(moveStack);
-								}
+								
 								int newSize = Tableaus.get(i - 1).size();
 
 								if (newSize != 0) {
@@ -170,15 +187,17 @@ Card lastCard = new Card("Spades", "300", 300);
 									// System.out.println("New size: " + newSize);
 									Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
 								}
-								return true;
+								this.playfield.countMoves++;
+								this.playfield.hasPlayed = true;
+								return;
 							}
 						} else if (tabSize == 1 && moveStack.size() >= 1) {
 							if (tab.get(tabSize - 1).getRank() == moveStack.get(0).getRank() + 1
 									&& !tab.get(tabSize - 1).getColor().equals(moveStack.get(0).getColor())) {
-								if (this.hasFaceDown(i - 1) == true) {
+								
 									tab.addAll(moveStack);
 									Tableaus.get(i - 1).removeAll(moveStack);
-								}
+								
 								int newSize = Tableaus.get(i - 1).size();
 
 								if (newSize != 0) {
@@ -187,13 +206,15 @@ Card lastCard = new Card("Spades", "300", 300);
 									// System.out.println("New size: " + newSize);
 									Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
 								}
-								return true;
+								this.playfield.countMoves++;
+								this.playfield.hasPlayed = true;
+								return;
 							}
 						} else if (tabSize == 0) {
 							if (this.hasFaceDown(i - 1) == true) {
 								tab.addAll(moveStack);
 								Tableaus.get(i - 1).removeAll(moveStack);
-							}
+							
 							int newSize = Tableaus.get(i - 1).size();
 
 							if (newSize != 0) {
@@ -204,12 +225,20 @@ Card lastCard = new Card("Spades", "300", 300);
 
 								Tableaus.get(i - 1).get(newSize - 1).setFaceUp(true);
 							}
-
-							return true;
+							
+							this.playfield.countMoves++;
+							this.playfield.hasPlayed = true;
+							}
+							else
+							{
+								
+							}
+							return;
 
 						}
 
-					} else {
+					 else {
+						
 
 					}
 				}
@@ -217,7 +246,7 @@ Card lastCard = new Card("Spades", "300", 300);
 
 		}
 
-		return false;
+		
 	}
    
    /**
@@ -274,6 +303,7 @@ Card lastCard = new Card("Spades", "300", 300);
 			   card1 = Tableaus.get(i).get(tab - 1);
 			   if (!card.getColor().equals(card1.getColor()) && card.getRank() == card1.getRank() - 1)
 			   {
+				   playfield.countMoves++;
 				   return i + 1;
 			   }
 		   }
@@ -282,6 +312,7 @@ Card lastCard = new Card("Spades", "300", 300);
 			   
 		   }
 	   }
+	   
 	   return 0;
    }
    
