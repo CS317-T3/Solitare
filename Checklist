@@ -12,12 +12,12 @@
 - [X] Establish and use team policy statement.
 
 **Testing:**
-- [ ] Design and execute tests for confirming refined user stories match initial user stories.
-- [ ] Design and execute tests for confirming design matches refined user stories.
-- [ ] Design and execute tests for confirming implementation matches design.
-- [ ] Create basic execution test capabilities.
-- [ ] Create comprehensive test capabilities.
-- [ ] Create and regularly use unit testing.
+- [x] Design and execute tests for confirming refined user stories match initial user stories.
+- [x] Design and execute tests for confirming design matches refined user stories.
+- [x] Design and execute tests for confirming implementation matches design.
+- [x] Create basic execution test capabilities.
+- [x] Create comprehensive test capabilities.
+- [x] Create and regularly use unit testing.
 - [ ] Use a pull-request, code-review integration process for source changes.
 - [ ] Automatically monitor and report code coverage.
 - [x] Use test-driven development.
