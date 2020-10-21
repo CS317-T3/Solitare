@@ -91,6 +91,42 @@ public class Deck
 //    		   System.out.println(card.ToString());
 //    	   }
 //       }
+	
+	/**
+	* This method takes two cards in the deck and swaps their positions
+	*/
+	public void swapCards(Card card1, Card card2) {
+	    	int index1 = this.deck.indexOf(card1);
+	    	int index2 = this.deck.indexOf(card2);
+	    	this.deck.set(index1, card2);
+	    	this.deck.set(index2, card1);
+	    }
+	    
+	/**
+	* This method shuffles the cards in an order that guarantees a win
+	*/
+	public void shuffleWin() {
+	    	for (int i = 0; i < this.deck.size()/2; i++) {
+	    		swapCards(this.deck.get(i), this.deck.get(51-i));
+	    	}
+	    	for(Card card: this.deck)
+			   {
+				   this.cardsInPlay.add(card);
+			   }
+	    }
+	    
+	/**
+	* This method shuffles the cards in an order that makes it impossible to win.
+	*/
+	public void shuffleLoss() {
+	    	for (int i = 0; i < 13; i++) {
+	    		swapCards(this.deck.get(i), this.deck.get(25-i));
+	    	}
+	    	for(Card card: this.deck)
+			   {
+				   this.cardsInPlay.add(card);
+			   }
+	    }
 
        /**
         * This method takes the cardsInPlay linked list and returns the card at the top of the list
