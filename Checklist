@@ -32,7 +32,7 @@
 **Design:**
 - [X] Create basic design documents such as class, interaction and use case.
 - [X] Write lightweight design documents
-- [X] Write throw-away prototype code to explore high-risk design elements.
+- [ ] Write throw-away prototype code to explore high-risk design elements.
 
 **Development:**
 - [X] Create GitHub Isses describing major design and development tasks.
